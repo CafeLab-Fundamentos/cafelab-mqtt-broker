@@ -1,0 +1,17 @@
+﻿# CafeLab IoT - Mosquitto MQTT broker local
+# Broker local para edge-clean -> mqtt-bridge -> API Gateway.
+services:
+  mosquitto:
+    image: eclipse-mosquitto:2
+    container_name: cafelab-mosquitto
+    restart: unless-stopped
+    ports:
+      - "1883:1883"
+    volumes:
+      - ./config/mosquitto.conf:/mosquitto/config/mosquitto.conf:ro
+      - mosquitto_data:/mosquitto/data
+
+volumes:
+  mosquitto_data:
+
+
